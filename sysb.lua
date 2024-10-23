@@ -179,29 +179,6 @@ local function ToggleVoidProtection(bool)
 	end
 end
 
-local function PlayAnim(id,time,speed)
-	pcall(function()
-		plr.Character.Animate.Disabled = false
-		local hum = plr.Character.Humanoid
-		local animtrack = hum:GetPlayingAnimationTracks()
-		for i,track in pairs(animtrack) do
-			track:Stop()
-		end
-		plr.Character.Animate.Disabled = true
-		local Anim = Instance.new("Animation")
-		Anim.AnimationId = "rbxassetid://"..id
-		local loadanim = hum:LoadAnimation(Anim)
-		loadanim:Play()
-		loadanim.TimePosition = time
-		loadanim:AdjustSpeed(speed)
-		loadanim.Stopped:Connect(function()
-			plr.Character.Animate.Disabled = false
-			for i, track in pairs (animtrack) do
-        		track:Stop()
-    		end
-		end)
-	end)
-end
 
 local function SendNotify(title, message, duration)
 	game:GetService("StarterGui"):SetCore("SendNotification", {Title = title,Text = message,Duration = duration;})
