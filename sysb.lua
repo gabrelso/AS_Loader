@@ -313,15 +313,16 @@ FlySpeed_Button.TextColor3 = Color3.fromRGB(0, 0, 0)
 FlySpeed_Button.TextScaled = true
 FlySpeed_Button.TextSize = 14.000
 FlySpeed_Button.TextWrapped = true
+
 -- Create Auto Strength and Auto Defense buttons in the Game Section
 local AutoStrength_Button = Instance.new("TextButton")
 AutoStrength_Button.Name = "AutoStrength_Button"
-AutoStrength_Button.Parent = Game_Section -- Change the parent to Game_Section
+AutoStrength_Button.Parent = Game_Section -- Set this to Game_Section, assuming it exists
 AutoStrength_Button.BackgroundColor3 = Color3.fromRGB(0, 255, 255)
 AutoStrength_Button.BackgroundTransparency = 0.500
 AutoStrength_Button.BorderColor3 = Color3.fromRGB(0, 0, 0)
 AutoStrength_Button.BorderSizePixel = 0
-AutoStrength_Button.Position = UDim2.new(0, 25, 0, 325)
+AutoStrength_Button.Position = UDim2.new(0, 25, 0, 325) -- Adjust to desired position
 AutoStrength_Button.Size = UDim2.new(0, 150, 0, 30)
 AutoStrength_Button.Font = Enum.Font.Oswald
 AutoStrength_Button.Text = "Auto Strength"
@@ -332,12 +333,12 @@ AutoStrength_Button.TextWrapped = true
 
 local AutoDefense_Button = Instance.new("TextButton")
 AutoDefense_Button.Name = "AutoDefense_Button"
-AutoDefense_Button.Parent = Game_Section -- Change the parent to Game_Section
+AutoDefense_Button.Parent = Game_Section -- Set this to Game_Section, assuming it exists
 AutoDefense_Button.BackgroundColor3 = Color3.fromRGB(0, 255, 255)
 AutoDefense_Button.BackgroundTransparency = 0.500
 AutoDefense_Button.BorderColor3 = Color3.fromRGB(0, 0, 0)
 AutoDefense_Button.BorderSizePixel = 0
-AutoDefense_Button.Position = UDim2.new(0, 25, 0, 375)
+AutoDefense_Button.Position = UDim2.new(0, 25, 0, 375) -- Adjust to desired position
 AutoDefense_Button.Size = UDim2.new(0, 150, 0, 30)
 AutoDefense_Button.Font = Enum.Font.Oswald
 AutoDefense_Button.Text = "Auto Defense"
@@ -973,6 +974,28 @@ UICornerOC.Parent = OpenClose
 
 CreateToggle(VoidProtection_Button)
 
+-- Toggle for Auto Strength
+AutoStrength_Button.MouseButton1Click:Connect(function()
+    ChangeToggleColor(AutoStrength_Button)
+    if AutoStrength_Button.Ticket_Asset.ImageColor3 == Color3.fromRGB(0, 255, 0) then
+        getgenv().autoE = true
+        AutoE()  -- Call the AutoE function
+    else
+        getgenv().autoE = false
+    end
+end)
+
+-- Toggle for Auto Defense
+AutoDefense_Button.MouseButton1Click:Connect(function()
+    ChangeToggleColor(AutoDefense_Button)
+    if AutoDefense_Button.Ticket_Asset.ImageColor3 == Color3.fromRGB(0, 255, 0) then
+        getgenv().autoV = true
+        AutoV()  -- Call the AutoV function
+    else
+        getgenv().autoV = false
+    end
+end)
+
 CreateToggle(Fly_Button)
 CreateClicker(WalkSpeed_Button)
 CreateClicker(ClearCheckpoint_Button)
@@ -1488,28 +1511,6 @@ Day_Button.MouseButton1Click:Connect(function()
 	end
 end)
 
-
--- Toggle for Auto Strength
-AutoStrength_Button.MouseButton1Click:Connect(function()
-    ChangeToggleColor(AutoStrength_Button)
-    if AutoStrength_Button.Ticket_Asset.ImageColor3 == Color3.fromRGB(0, 255, 0) then
-        getgenv().autoE = true
-        AutoE()  -- Call the AutoE function
-    else
-        getgenv().autoE = false
-    end
-end)
-
--- Toggle for Auto Defense
-AutoDefense_Button.MouseButton1Click:Connect(function()
-    ChangeToggleColor(AutoDefense_Button)
-    if AutoDefense_Button.Ticket_Asset.ImageColor3 == Color3.fromRGB(0, 255, 0) then
-        getgenv().autoV = true
-        AutoV()  -- Call the AutoV function
-    else
-        getgenv().autoV = false
-    end
-end)
 
 Night_Button.MouseButton1Click:Connect(function()
 	if Shaders_Button.Ticket_Asset.ImageColor3 == Color3.fromRGB(255,0,0) then
