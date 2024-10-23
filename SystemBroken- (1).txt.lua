@@ -1,5 +1,4 @@
-local redzlib = loadstring(game:HttpGet("https://raw.githubusercontent.com/REDzHUB/RedzLibV5/main/Source.Lua"))() 
-
+local redzlib = loadstring(game:HttpGet("https://raw.githubusercontent.com/REDzHUB/RedzLibV5/main/Source.Lua"))()
 local Window = redzlib:MakeWindow({
     Title = "Cum Hub : Dragon Blox GT",
     SubTitle = "que bosta em",
@@ -17,6 +16,7 @@ Window:AddMinimizeButton({
 local player = game.Players.LocalPlayer
 local vim = game:GetService("VirtualInputManager")
 local energy = player.Status.Energy.Value
+
 getgenv().autoV = false
 getgenv().autoE = false
 getgenv().autoQ = false
@@ -63,82 +63,95 @@ Tab1:AddToggle({
 })
 
 Tab2:AddButton({
-    Name = "TP Pumpkin 1",
-    Description = "Teleport to Pumpkin Location 1.",
+    Name = "TP Pumpkin Location 1",
     Callback = function()
         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(2330.640869140625, 550.7536010742188, -1724.03173828125)
     end
 })
 
 Tab2:AddButton({
-    Name = "TP Pumpkin 2",
-    Description = "Teleport to Pumpkin Location 2.",
+    Name = "TP Pumpkin Location 2",
     Callback = function()
         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1402.6492919921875, 552.6553344726562, 1864.331298828125)
     end
 })
 
 Tab2:AddButton({
-    Name = "TP Pumpkin 3",
-    Description = "Teleport to Pumpkin Location 3.",
+    Name = "TP Pumpkin Location 3",
     Callback = function()
         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-287.9718322753906, 551.8124389648438, -369.174072265625)
     end
 })
 
 Tab2:AddButton({
-    Name = "TP Pumpkin 4",
-    Description = "Teleport to Pumpkin Location 4.",
+    Name = "TP Pumpkin Location 4",
     Callback = function()
         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(206.6642303466797, 550.7536010742188, -1967.5059814453125)
     end
 })
 
 Tab2:AddButton({
-    Name = "TP Pumpkin 5",
-    Description = "Teleport to Pumpkin Location 5.",
+    Name = "TP Pumpkin Location 5",
     Callback = function()
         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(776.6201782226562, 550.7536010742188, -1586.50634765625)
     end
 })
 
 Tab2:AddButton({
-    Name = "TP Pumpkin 6",
-    Description = "Teleport to Pumpkin Location 6.",
+    Name = "TP Pumpkin Location 6",
     Callback = function()
         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(2678.873291015625, 550.7536010742188, -994.9588623046875)
     end
 })
 
 Tab2:AddButton({
-    Name = "TP Pumpkin 7",
-    Description = "Teleport to Pumpkin Location 7.",
+    Name = "TP Pumpkin Location 7",
     Callback = function()
         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(2588.227294921875, 564.5017700195312, -4670.9208984375)
     end
 })
 
 Tab2:AddButton({
-    Name = "TP Pumpkin 8",
-    Description = "Teleport to Pumpkin Location 8.",
+    Name = "TP Pumpkin Location 8",
     Callback = function()
         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-242.6627197265625, 3360.113525390625, -2763.47265625)
     end
 })
 
 Tab2:AddButton({
-    Name = "TP Pumpkin 9",
-    Description = "Teleport to Pumpkin Location 9.",
+    Name = "TP Pumpkin Location 9",
     Callback = function()
         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-522.2780151367188, 645.3949584960938, -2774.021484375)
     end
 })
 
 Tab2:AddButton({
-    Name = "TP Pumpkin 10",
-    Description = "Teleport to Pumpkin Location 10.",
+    Name = "TP Pumpkin Location 10",
     Callback = function()
         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(417.4867248535156, 549.7522583007812, -3276.27490234375)
+    end
+})
+
+Tab2:AddButton({
+    Name = "TP All Pumpkin Locations",
+    Callback = function()
+        local locations = {
+            CFrame.new(2330.640869140625, 550.7536010742188, -1724.03173828125),
+            CFrame.new(1402.6492919921875, 552.6553344726562, 1864.331298828125),
+            CFrame.new(-287.9718322753906, 551.8124389648438, -369.174072265625),
+            CFrame.new(206.6642303466797, 550.7536010742188, -1967.5059814453125),
+            CFrame.new(776.6201782226562, 550.7536010742188, -1586.50634765625),
+            CFrame.new(2678.873291015625, 550.7536010742188, -994.9588623046875),
+            CFrame.new(2588.227294921875, 564.5017700195312, -4670.9208984375),
+            CFrame.new(-242.6627197265625, 3360.113525390625, -2763.47265625),
+            CFrame.new(-522.2780151367188, 645.3949584960938, -2774.021484375),
+            CFrame.new(417.4867248535156, 549.7522583007812, -3276.27490234375)
+        }
+
+        for _, loc in pairs(locations) do
+            player.Character.HumanoidRootPart.CFrame = loc
+            wait(2)
+        end
     end
 })
 
