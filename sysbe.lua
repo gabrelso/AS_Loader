@@ -1190,7 +1190,7 @@ ViewTarget_Button.MouseButton1Click:Connect(function()
 	if TargetedPlayer ~= nil then
 		ChangeToggleColor(ViewTarget_Button)
 		if ViewTarget_Button.Ticket_Asset.ImageColor3 == Color3.fromRGB(0,255,0) then
-			repeat
+			repeat until 
 				pcall(function()
 					game.Workspace.CurrentCamera.CameraSubject = Players[TargetedPlayer].Character.Humanoid
 				end)
