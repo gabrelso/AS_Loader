@@ -157,73 +157,6 @@ local function Touch(x,root)
 	end)
 end
 
-
-local function GetPush()
-	local TempPush = nil
-	pcall(function()
-		if plr.Backpack:FindFirstChild("Push") then
-			PushTool = plr.Backpack.Push
-			PushTool.Parent = plr.Character
-			TempPush = PushTool
-		end
-		for i,v in pairs(Players:GetPlayers()) do
-			if v.Character:FindFirstChild("Push") then
-				TempPush = v.Character.Push
-			end
-		end
-	end)
-	return TempPush
-end
-
-local function CheckPotion()
-	if plr.Backpack:FindFirstChild("potion") then
-		PotionTool = plr.Backpack:FindFirstChild("potion")
-		return true
-	elseif plr.Character:FindFirstChild("potion") then
-		PotionTool = plr.Character:FindFirstChild("potion")
-		return true
-	else
-		return false
-	end
-end
-
-local function Push(Target)
-	local Push = GetPush()
-	local FixTool = nil
-	if Push ~= nil then
-		local args = {[1] = Target.Character}
-		GetPush().PushTool:FireServer(unpack(args))
-	end
-	if plr.Character:FindFirstChild("Push") then
-		plr.Character.Push.Parent = plr.Backpack
-	end
-	if plr.Character:FindFirstChild("ModdedPush") then
-		FixTool = plr.Character:FindFirstChild("ModdedPush")
-		FixTool.Parent = plr.Backpack
-		FixTool.Parent = plr.Character
-	end
-	if plr.Character:FindFirstChild("ClickTarget") then
-		FixTool = plr.Character:FindFirstChild("ClickTarget")
-		FixTool.Parent = plr.Backpack
-		FixTool.Parent = plr.Character
-	end
-	if plr.Character:FindFirstChild("potion") then
-		FixTool = plr.Character:FindFirstChild("potion")
-		FixTool.Parent = plr.Backpack
-		FixTool.Parent = plr.Character
-	end
-end
-
-local function ToggleRagdoll(bool)
-	pcall(function()
-		plr.Character["Falling down"].Disabled = bool
-		plr.Character["Swimming"].Disabled = bool
-		plr.Character["StartRagdoll"].Disabled = bool
-		plr.Character["Pushed"].Disabled = bool
-		plr.Character["RagdollMe"].Disabled = bool
-	end)
-end
-
 local function ToggleVoidProtection(bool)
 	if bool then
 		game.Workspace.FallenPartsDestroyHeight = 0/0
@@ -254,14 +187,6 @@ local function PlayAnim(id,time,speed)
     		end
 		end)
 	end)
-end
-
-local function StopAnim()
-	plr.Character.Animate.Disabled = false
-    local animtrack = plr.Character.Humanoid:GetPlayingAnimationTracks()
-    for i, track in pairs (animtrack) do
-        track:Stop()
-    end
 end
 
 local function SendNotify(title, message, duration)
@@ -550,21 +475,6 @@ BenxTarget_Button.TextScaled = true
 BenxTarget_Button.TextSize = 14.000
 BenxTarget_Button.TextWrapped = true
 
-PushTarget_Button.Name = "PushTarget_Button"
-PushTarget_Button.Parent = Target_Section
-PushTarget_Button.BackgroundColor3 = Color3.fromRGB(0, 255, 255)
-PushTarget_Button.BackgroundTransparency = 0.500
-PushTarget_Button.BorderColor3 = Color3.fromRGB(0, 0, 0)
-PushTarget_Button.BorderSizePixel = 0
-PushTarget_Button.Position = UDim2.new(0, 25, 0, 400)
-PushTarget_Button.Size = UDim2.new(0, 150, 0, 30)
-PushTarget_Button.Font = Enum.Font.Oswald
-PushTarget_Button.Text = "Push"
-PushTarget_Button.TextColor3 = Color3.fromRGB(0, 0, 0)
-PushTarget_Button.TextScaled = true
-PushTarget_Button.TextSize = 14.000
-PushTarget_Button.TextWrapped = true
-
 WhitelistTarget_Button.Name = "WhitelistTarget_Button"
 WhitelistTarget_Button.Parent = Target_Section
 WhitelistTarget_Button.BackgroundColor3 = Color3.fromRGB(0, 255, 255)
@@ -670,77 +580,7 @@ DragTarget_Button.TextScaled = true
 DragTarget_Button.TextSize = 14.000
 DragTarget_Button.TextWrapped = true
 
-Animations_Section.Name = "Animations_Section"
-Animations_Section.Parent = Background
-Animations_Section.Active = true
-Animations_Section.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Animations_Section.BackgroundTransparency = 1.000
-Animations_Section.BorderColor3 = Color3.fromRGB(0, 0, 0)
-Animations_Section.BorderSizePixel = 0
-Animations_Section.Position = UDim2.new(0, 105, 0, 30)
-Animations_Section.Size = UDim2.new(0, 395, 0, 320)
-Animations_Section.Visible = false
-Animations_Section.CanvasSize = UDim2.new(0, 0, 1.6, 0)
-Animations_Section.ScrollBarThickness = 5
 
-VampireAnim_Button.Name = "VampireAnim_Button"
-VampireAnim_Button.Parent = Animations_Section
-VampireAnim_Button.BackgroundColor3 = Color3.fromRGB(0, 255, 255)
-VampireAnim_Button.BackgroundTransparency = 0.500
-VampireAnim_Button.BorderColor3 = Color3.fromRGB(0, 0, 0)
-VampireAnim_Button.BorderSizePixel = 0
-VampireAnim_Button.Position = UDim2.new(0, 25, 0, 25)
-VampireAnim_Button.Size = UDim2.new(0, 150, 0, 30)
-VampireAnim_Button.Font = Enum.Font.Oswald
-VampireAnim_Button.Text = "Vampire"
-VampireAnim_Button.TextColor3 = Color3.fromRGB(0, 0, 0)
-VampireAnim_Button.TextScaled = true
-VampireAnim_Button.TextSize = 14.000
-VampireAnim_Button.TextWrapped = true
-
-HeroAnim_Button.Name = "HeroAnim_Button"
-HeroAnim_Button.Parent = Animations_Section
-HeroAnim_Button.BackgroundColor3 = Color3.fromRGB(0, 255, 255)
-HeroAnim_Button.BackgroundTransparency = 0.500
-HeroAnim_Button.BorderColor3 = Color3.fromRGB(0, 0, 0)
-HeroAnim_Button.BorderSizePixel = 0
-HeroAnim_Button.Position = UDim2.new(0, 210, 0, 25)
-HeroAnim_Button.Size = UDim2.new(0, 150, 0, 30)
-HeroAnim_Button.Font = Enum.Font.Oswald
-HeroAnim_Button.Text = "Hero"
-HeroAnim_Button.TextColor3 = Color3.fromRGB(0, 0, 0)
-HeroAnim_Button.TextScaled = true
-HeroAnim_Button.TextSize = 14.000
-HeroAnim_Button.TextWrapped = true
-
-ZombieClassicAnim_Button.Name = "ZombieClassicAnim_Button"
-ZombieClassicAnim_Button.Parent = Animations_Section
-ZombieClassicAnim_Button.BackgroundColor3 = Color3.fromRGB(0, 255, 255)
-ZombieClassicAnim_Button.BackgroundTransparency = 0.500
-ZombieClassicAnim_Button.BorderColor3 = Color3.fromRGB(0, 0, 0)
-ZombieClassicAnim_Button.BorderSizePixel = 0
-ZombieClassicAnim_Button.Position = UDim2.new(0, 25, 0, 75)
-ZombieClassicAnim_Button.Size = UDim2.new(0, 150, 0, 30)
-ZombieClassicAnim_Button.Font = Enum.Font.Oswald
-ZombieClassicAnim_Button.Text = "Zombie Classic"
-ZombieClassicAnim_Button.TextColor3 = Color3.fromRGB(0, 0, 0)
-ZombieClassicAnim_Button.TextScaled = true
-ZombieClassicAnim_Button.TextSize = 14.000
-ZombieClassicAnim_Button.TextWrapped = true
-
-MageAnim_Button.Name = "MageAnim_Button"
-MageAnim_Button.Parent = Animations_Section
-MageAnim_Button.BackgroundColor3 = Color3.fromRGB(0, 255, 255)
-MageAnim_Button.BackgroundTransparency = 0.500
-MageAnim_Button.BorderColor3 = Color3.fromRGB(0, 0, 0)
-MageAnim_Button.BorderSizePixel = 0
-MageAnim_Button.Position = UDim2.new(0, 210, 0, 75)
-MageAnim_Button.Size = UDim2.new(0, 150, 0, 30)
-MageAnim_Button.Font = Enum.Font.Oswald
-MageAnim_Button.Text = "Mage"
-MageAnim_Button.TextColor3 = Color3.fromRGB(0, 0, 0)
-MageAnim_Button.TextScaled = true
-MageAnim_Button.TextSize = 14.000
 MageAnim_Button.TextWrapped = true
 
 GhostAnim_Button.Name = "GhostAnim_Button"
