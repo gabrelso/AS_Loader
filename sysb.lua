@@ -2407,7 +2407,7 @@ task.spawn(function()
 				game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, game.JobId, plr)
 			end
 			if (date_1 ~= original_date) and (date_2 ~= original_date) and (date_3 ~= original_date) then
-				SysBroker:Destroy()
+				SysBroke:Destroy()
 				SendNotify("System Broken","An unexpected error occurred, re-joining...")
 				game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, game.JobId, plr)
 			end
@@ -2416,134 +2416,6 @@ task.spawn(function()
 end)
 
 
-
--- Existing content from the SystemBroken script
-CreateToggle({
-    Name = "Auto Strength",
-    Default = false,
-    Callback = function(ValueE)
-        getgenv().autoE = ValueE
-        if ValueE then
-            while getgenv().autoE do
-                wait(0.1)
-                vim:SendKeyEvent(true, "E", false, game)
-                wait(0.1)
-                vim:SendKeyEvent(false, "E", false, game)
-            end
-        end
-    end
-})
-
--- New Toggle: Auto Defense
-CreateToggle({
-    Name = "Auto Defense",
-    Default = false,
-    Callback = function(ValueV)
-        getgenv().autoV = ValueV
-        if ValueV then
-            while getgenv().autoV do
-                wait(0.1)
-                vim:SendKeyEvent(true, "V", false, game)
-                wait(0.1)
-                vim:SendKeyEvent(false, "V", false, game)
-            end
-        end
-    end
-})
-
--- New Toggle: Auto Ki + Energy
-CreateToggle({
-    Name = "Auto Ki + Energy",
-    Default = false,
-    Callback = function(Value)
-        getgenv().autoQ = Value
-        getgenv().autoC = Value
-        if Value then
-            AutoKiEnergy()
-        end
-    end
-})
-
--- Adding 10 New Buttons for Pumpkin Teleports
-CreateButton({
-    Name = "TP Pumpkin 1",
-    Description = "Teleport to Pumpkin Location 1.",
-    Callback = function()
-        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(2330.640869140625, 550.7536010742188, -1724.03173828125)
-    end
-})
-
-CreateButton({
-    Name = "TP Pumpkin 2",
-    Description = "Teleport to Pumpkin Location 2.",
-    Callback = function()
-        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1402.6492919921875, 552.6553344726562, 1864.331298828125)
-    end
-})
-
-CreateButton({
-    Name = "TP Pumpkin 3",
-    Description = "Teleport to Pumpkin Location 3.",
-    Callback = function()
-        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-287.9718322753906, 551.8124389648438, -369.174072265625)
-    end
-})
-
-CreateButton({
-    Name = "TP Pumpkin 4",
-    Description = "Teleport to Pumpkin Location 4.",
-    Callback = function()
-        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(206.6642303466797, 550.7536010742188, -1967.5059814453125)
-    end
-})
-
-CreateButton({
-    Name = "TP Pumpkin 5",
-    Description = "Teleport to Pumpkin Location 5.",
-    Callback = function()
-        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(776.6201782226562, 550.7536010742188, -1586.50634765625)
-    end
-})
-
-CreateButton({
-    Name = "TP Pumpkin 6",
-    Description = "Teleport to Pumpkin Location 6.",
-    Callback = function()
-        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(2678.873291015625, 550.7536010742188, -994.9588623046875)
-    end
-})
-
-CreateButton({
-    Name = "TP Pumpkin 7",
-    Description = "Teleport to Pumpkin Location 7.",
-    Callback = function()
-        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(2588.227294921875, 564.5017700195312, -4670.9208984375)
-    end
-})
-
-CreateButton({
-    Name = "TP Pumpkin 8",
-    Description = "Teleport to Pumpkin Location 8.",
-    Callback = function()
-        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-242.6627197265625, 3360.113525390625, -2763.47265625)
-    end
-})
-
-CreateButton({
-    Name = "TP Pumpkin 9",
-    Description = "Teleport to Pumpkin Location 9.",
-    Callback = function()
-        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-522.2780151367188, 645.3949584960938, -2774.021484375)
-    end
-})
-
-CreateButton({
-    Name = "TP Pumpkin 10",
-    Description = "Teleport to Pumpkin Location 10.",
-    Callback = function()
-        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(417.4867248535156, 549.7522583007812, -3276.27490234375)
-    end
-})
 
 SendNotify("System Broken","Gui developed by MalwareHub - Discord in your clipboard",10)
 setclipboard("https://discord.gg/RkhpySwNR9")
