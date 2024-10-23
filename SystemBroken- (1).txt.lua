@@ -1,4 +1,4 @@
-local redzlib = loadstring(game:HttpGet("https://raw.githubusercontent.com/REDzHUB/RedzLibV5/main/Source.Lua"))()
+local redzlib = loadstring(game:HttpGet("https://raw.githubusercontent.com/REDzHUB/RedzLibV5/main/Source.Lua"))() 
 
 local Window = redzlib:MakeWindow({
     Title = "Cum Hub : Dragon Blox GT",
@@ -14,10 +14,11 @@ Window:AddMinimizeButton({
     Corner = { CornerRadius = UDim.new(0, 6) }
 })
 
+local player = game.Players.LocalPlayer
 local vim = game:GetService("VirtualInputManager")
+local energy = player.Status.Energy.Value
 getgenv().autoV = false
 getgenv().autoE = false
-getgenv().autoC = false
 getgenv().autoQ = false
 
 Tab1:AddToggle({
@@ -51,13 +52,12 @@ Tab1:AddToggle({
 })
 
 Tab1:AddToggle({
-    Name = "Auto Ki + Energy",
+    Name = "Auto Ki",
     Default = false,
-    Callback = function(Value)
-        getgenv().autoQ = Value
-        getgenv().autoC = Value
-        if Value then
-            AutoKiEnergy()
+    Callback = function(ValueQ)
+        getgenv().autoQ = ValueQ
+        if ValueQ then
+            AutoKi()
         end
     end
 })
@@ -142,22 +142,14 @@ Tab2:AddButton({
     end
 })
 
-function AutoKiEnergy()
+function AutoKi()
     spawn(function()
         while getgenv().autoQ do
-            local energy = game.Players.LocalPlayer.Status.Energy.Value
-            local maxEnergy = game.Players.LocalPlayer.Status.MaxEnergy.Value
-            local energyThreshold = maxEnergy * 0.05
-
             vim:SendKeyEvent(true, "Q", false, game)
             vim:SendKeyEvent(false, "Q", false, game)
-
-            if energy <= energyThreshold then
-                vim:SendKeyEvent(true, "C", false, game)
-                task.wait(7.95)
-                vim:SendKeyEvent(false, "C", false, game)
+            if energy <= 1 then
+                player.Character.Humanoid.Health = 0
             end
-
             wait(0.1)
         end
     end)
