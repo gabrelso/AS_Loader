@@ -121,6 +121,28 @@ function AutoKiEnergy()
     end)
 end
 
+function AutoE()
+    spawn(function()
+        while getgenv().autoE do
+            vim:SendKeyEvent(true, "E", false, game)
+            wait(0.1)
+            vim:SendKeyEvent(false, "E", false, game)
+            wait(0.1)
+        end
+    end)
+end
+
+function AutoV()
+    spawn(function()
+        while getgenv().autoV do
+            vim:SendKeyEvent(true, "V", false, game)
+            wait(0.1)
+            vim:SendKeyEvent(false, "V", false, game)
+            wait(0.1)
+        end
+    end)
+end
+
 local function PredictionTP(player,method)
 	local root = GetRoot(player)
 	local pos = root.Position
