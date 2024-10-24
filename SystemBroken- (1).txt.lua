@@ -6,6 +6,7 @@ local Window = redzlib:MakeWindow({
     SaveFolder = "cumHub-DBGT.json"
 })
 
+
 local Tab1 = Window:MakeTab({"Main", "home"})
 local Tab2 = Window:MakeTab({"Halloween", "moon"})
 local Tab3 = Window:MakeTab({"Misc", "plus"})
