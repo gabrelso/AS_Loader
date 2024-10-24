@@ -188,15 +188,17 @@ Tab2:AddButton({
 function AutoKi()
     spawn(function()
         while getgenv().autoQ do
-            vim:SendKeyEvent(true, "Q", false, game)
-            vim:SendKeyEvent(false, "Q", false, game)
             if energy <= 0.05 * player.Status.MaxEnergy.Value then
                 player.Character.Humanoid.Health = 0
+            else
+                vim:SendKeyEvent(true, "Q", false, game)
+                vim:SendKeyEvent(false, "Q", false, game)
             end
             wait(0.1)
         end
     end)
 end
+
 
 function ToggleShaders()
     if getgenv().shaders then
