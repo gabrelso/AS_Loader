@@ -7,6 +7,7 @@ local Window = redzlib:MakeWindow({
 
 local Tab1 = Window:MakeTab({"Main", "home"})
 local Tab2 = Window:MakeTab({"Halloween", "moon"})
+local Tab3 = Window:MakeTab({"Misc", "plus"})
 
 Window:AddMinimizeButton({
     Button = { Image = "rbxassetid://18372013477", BackgroundTransparency = 0 },
@@ -20,6 +21,8 @@ local energy = player.Status.Energy.Value
 getgenv().autoV = false
 getgenv().autoE = false
 getgenv().autoQ = false
+
+local Section = Tab:AddSection("Strength")
 
 Tab1:AddToggle({
     Name = "Auto Strength",
@@ -36,6 +39,8 @@ Tab1:AddToggle({
     end
 })
 
+local Section1 = Tab:AddSection("Defense")
+
 Tab1:AddToggle({
     Name = "Auto Defense",
     Default = false,
@@ -51,6 +56,8 @@ Tab1:AddToggle({
     end
 })
 
+local Section2 = Tab:AddSection("Ki / Energy")
+
 Tab1:AddToggle({
     Name = "Auto Ki",
     Default = false,
@@ -61,6 +68,22 @@ Tab1:AddToggle({
         end
     end
 })
+
+local Section4 = Tab:AddSection("Themes")
+
+Tab3:AddButton({"Dark Theme", function()
+  redzlib:SetTheme("Dark")
+end})
+
+Tab3:AddButton({"Darker Theme", function()
+  redzlib:SetTheme("Darker")
+end})
+
+Tab3:AddButton({"Dark Purple", function()
+  redzlib:SetTheme("Purple")
+end})
+
+local Section3 = Tab:AddSection("Halloween Event Pumpkin Locations")
 
 Tab2:AddButton({
     Name = "TP Pumpkin Location 1",
@@ -167,3 +190,10 @@ function AutoKi()
         end
     end)
 end
+
+local vu = game:service'VirtualUser'
+game:service'Players'.LocalPlayer.Idled:connect(function()
+    vu:CaptureController()
+    vu:ClickButton2(Vector2.new())
+end)
+
