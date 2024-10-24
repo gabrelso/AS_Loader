@@ -17,8 +17,6 @@ Window:AddMinimizeButton({
 
 local player = game.Players.LocalPlayer
 local vim = game:GetService("VirtualInputManager")
-local energy = player.Status.Energy.Value
-local maxEnergy = player.Status.MaxEnergy.Value
 local TeleportService = game:GetService("TeleportService")
 
 getgenv().autoV = false
@@ -189,6 +187,9 @@ Tab2:AddButton({
 function AutoKi()
     spawn(function()
         while getgenv().autoQ do
+            local energy = player.Status.Energy.Value
+            local maxEnergy = player.Status.MaxEnergy.Value
+            
             if energy <= 0.05 * maxEnergy then
                 player.Character.Humanoid.Health = 0
             else
