@@ -69,18 +69,7 @@ Tab1:AddToggle({
     end
 })
 
-local Section4 = Tab3:AddSection("Themes / Shaders")
-Tab3:AddToggle({
-    Name = "Shaders",
-    Default = false,
-    Callback = function(ValueS)
-        getgenv().shaders = ValueS
-        if ValueS then
-            ToggleShaders()
-        end
-    end
-})
-
+local Section5 = Tab3:AddSection("Utilities")
 Tab3:AddButton({
     Name = "Reset",
     Callback = function()
@@ -95,6 +84,17 @@ Tab3:AddButton({
     end
 })
 
+local Section4 = Tab3:AddSection("Themes / Shaders")
+Tab3:AddToggle({
+    Name = "Shaders",
+    Default = false,
+    Callback = function(ValueS)
+        getgenv().shaders = ValueS
+        if ValueS then
+            ToggleShaders()
+        end
+    end
+})
 
 Tab3:AddButton({ Name = "Dark Theme", Callback = function() redzlib:SetTheme("Dark") end })
 Tab3:AddButton({ Name = "Darker Theme", Callback = function() redzlib:SetTheme("Darker") end })
