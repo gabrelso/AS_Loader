@@ -21,6 +21,7 @@ local energy = player.Status.Energy.Value
 getgenv().autoV = false
 getgenv().autoE = false
 getgenv().autoQ = false
+getgenv().shaders = false
 
 local Section = Tab:AddSection("Strength")
 
@@ -70,6 +71,17 @@ Tab1:AddToggle({
 })
 
 local Section4 = Tab:AddSection("Themes")
+
+Tab3:AddToggle({
+    Name = "Shaders",
+    Default = false,
+    Callback = function(ValueS)
+        getgenv().shaders = ValueS
+        if ValueS then
+            ToggleShaders()
+        end
+    end
+})
 
 Tab3:AddButton({"Dark Theme", function()
   redzlib:SetTheme("Dark")
@@ -189,6 +201,55 @@ function AutoKi()
             wait(0.1)
         end
     end)
+end
+
+function ToggleShaders()
+	if getgenv().shaders then
+		local Sky = Instance.new("Sky")
+		local Bloom = Instance.new("BloomEffect")
+		local Blur = Instance.new("BlurEffect")
+		local ColorC = Instance.new("ColorCorrectionEffect")
+		local SunRays = Instance.new("SunRaysEffect")
+
+		Light.Brightness = 2.25
+		Light.ExposureCompensation = 0.1
+		Light.ClockTime = 17.55
+
+		Sky.SkyboxBk = "http://www.roblox.com/asset/?id=..."
+		Sky.SkyboxDn = "http://www.roblox.com/asset/?id=..."
+		Sky.SkyboxFt = "http://www.roblox.com/asset/?id=..."
+		Sky.SkyboxLf = "http://www.roblox.com/asset/?id=..."
+		Sky.SkyboxRt = "http://www.roblox.com/asset/?id=..."
+		Sky.SkyboxUp = "http://www.roblox.com/asset/?id=..."
+		Sky.Parent = game.Lighting
+
+		Bloom.Intensity = 0.1
+		Bloom.Threshold = 0
+		Bloom.Size = 100
+		Bloom.Parent = game.Lighting
+
+		Blur.Size = 2
+		Blur.Parent = game.Lighting
+
+		ColorC.Saturation = 0.05
+		ColorC.Contrast = 0.1
+		ColorC.Brightness = 0.1
+		ColorC.TintColor = Color3.fromRGB(255, 224, 219)
+		ColorC.Parent = game.Lighting
+
+		SunRays.Intensity = 0.05
+		SunRays.Spread = 1
+		SunRays.Parent = game.Lighting
+	else
+		for _, v in pairs(game.Lighting:GetChildren()) do
+			if v:IsA("Sky") or v:IsA("BloomEffect") or v:IsA("BlurEffect") or v:IsA("ColorCorrectionEffect") or v:IsA("SunRaysEffect") then
+				v:Destroy()
+			end
+		end
+		Light.Brightness = 1
+		Light.ExposureCompensation = 0
+		Light.ClockTime = 12
+	end
 end
 
 local vu = game:service'VirtualUser'
