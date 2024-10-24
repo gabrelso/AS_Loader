@@ -89,7 +89,7 @@ Tab3:AddToggle({
     Callback = function(ValueDK)
         getgenv().destroyBlast = ValueDK
         while getgenv().destroyBlast do
-            wait(0.1)
+            wait(0.01)
             for _, part in pairs(workspace.PartStorage:GetChildren()) do
                 part:Destroy()
             end
