@@ -23,7 +23,7 @@ getgenv().autoE = false
 getgenv().autoQ = false
 getgenv().shaders = false
 
-local Section = Tab:AddSection("Strength")
+local Section = Tab1:AddSection("Strength")
 
 Tab1:AddToggle({
     Name = "Auto Strength",
@@ -40,7 +40,7 @@ Tab1:AddToggle({
     end
 })
 
-local Section1 = Tab:AddSection("Defense")
+local Section1 = Tab1:AddSection("Defense")
 
 Tab1:AddToggle({
     Name = "Auto Defense",
@@ -57,7 +57,7 @@ Tab1:AddToggle({
     end
 })
 
-local Section2 = Tab:AddSection("Ki / Energy")
+local Section2 = Tab1:AddSection("Ki / Energy")
 
 Tab1:AddToggle({
     Name = "Auto Ki",
@@ -70,7 +70,7 @@ Tab1:AddToggle({
     end
 })
 
-local Section4 = Tab:AddSection("Themes")
+local Section4 = Tab3:AddSection("Themes / Shaders")
 
 Tab3:AddToggle({
     Name = "Shaders",
@@ -95,7 +95,7 @@ Tab3:AddButton({"Dark Purple", function()
   redzlib:SetTheme("Purple")
 end})
 
-local Section3 = Tab:AddSection("Halloween Event Pumpkin Locations")
+local Section3 = Tab2:AddSection("Halloween Event Pumpkin Locations")
 
 Tab2:AddButton({
     Name = "TP Pumpkin Location 1",
