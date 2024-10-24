@@ -80,7 +80,7 @@ Tab3:AddButton({
 Tab3:AddButton({
     Name = "Rejoin Server",
     Callback = function()
-        TeleportService:TeleportToPlaceInstance(game.PlaceId, player.JobId)
+        game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, game.JobId)
     end
 })
 
