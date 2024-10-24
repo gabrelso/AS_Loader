@@ -18,6 +18,7 @@ Window:AddMinimizeButton({
 local player = game.Players.LocalPlayer
 local vim = game:GetService("VirtualInputManager")
 local energy = player.Status.Energy.Value
+local TeleportService = game:GetService("TeleportService")
 
 getgenv().autoV = false
 getgenv().autoE = false
@@ -88,11 +89,12 @@ Tab3:AddButton({
 })
 
 Tab3:AddButton({
-    Name = "Rejoin",
+    Name = "Rejoin Server",
     Callback = function()
-        game:GetService("TeleportService"):Teleport(game.PlaceId, player)
+        TeleportService:TeleportToPlaceInstance(game.PlaceId, player.JobId)
     end
 })
+
 
 Tab3:AddButton({ Name = "Dark Theme", Callback = function() redzlib:SetTheme("Dark") end })
 Tab3:AddButton({ Name = "Darker Theme", Callback = function() redzlib:SetTheme("Darker") end })
