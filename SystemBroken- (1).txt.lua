@@ -83,22 +83,6 @@ Tab3:AddButton({
     end
 })
 
-local Section4 = Tab3:AddSection("Themes / Shaders")
-Tab3:AddToggle({
-    Name = "Shaders",
-    Default = false,
-    Callback = function(ValueS)
-        getgenv().shaders = ValueS
-        if ValueS then
-            ToggleShaders()
-        end
-    end
-})
-
-Tab3:AddButton({ Name = "Dark Theme", Callback = function() redzlib:SetTheme("Dark") end })
-Tab3:AddButton({ Name = "Darker Theme", Callback = function() redzlib:SetTheme("Darker") end })
-Tab3:AddButton({ Name = "Dark Purple", Callback = function() redzlib:SetTheme("Purple") end })
-
 local Section3 = Tab2:AddSection("Halloween Event Pumpkin Locations")
 
 -- Teleport buttons for pumpkin locations
@@ -199,63 +183,6 @@ function AutoKi()
             wait(0.1)
         end
     end)
-end
-
-
-function ToggleShaders()
-    if getgenv().shaders then
-        local Sky = Instance.new("Sky")
-        local Bloom = Instance.new("BloomEffect")
-        local Blur = Instance.new("BlurEffect")
-        local ColorC = Instance.new("ColorCorrectionEffect")
-        local SunRays = Instance.new("SunRaysEffect")
-        
-        -- Correct access to Lighting service
-        local Lighting = game:GetService("Lighting")
-        
-        Lighting.Brightness = 2.25
-        Lighting.ExposureCompensation = 0.1
-        Lighting.ClockTime = 17.55
-        
-        Sky.SkyboxBk = "http://www.roblox.com/asset/?id=..." -- Provide actual asset IDs
-        Sky.SkyboxDn = "http://www.roblox.com/asset/?id=..." -- Provide actual asset IDs
-        Sky.SkyboxFt = "http://www.roblox.com/asset/?id=..."
-        Sky.SkyboxLf = "http://www.roblox.com/asset/?id=..."
-        Sky.SkyboxRt = "http://www.roblox.com/asset/?id=..."
-        Sky.SkyboxUp = "http://www.roblox.com/asset/?id=..."
-        Sky.Parent = Lighting
-        
-        Bloom.Intensity = 0.1
-        Bloom.Threshold = 0
-        Bloom.Size = 100
-        Bloom.Parent = Lighting
-        
-        Blur.Size = 2
-        Blur.Parent = Lighting
-        
-        ColorC.Saturation = 0.05
-        ColorC.Contrast = 0.1
-        ColorC.Brightness = 0.1
-        ColorC.TintColor = Color3.fromRGB(255, 224, 219)
-        ColorC.Parent = Lighting
-        
-        SunRays.Intensity = 0.05
-        SunRays.Spread = 1
-        SunRays.Parent = Lighting
-    else
-        for _, v in pairs(game.Lighting:GetChildren()) do
-            if v:IsA("Sky") or v:IsA("BloomEffect") or v:IsA("BlurEffect") or v:IsA("ColorCorrectionEffect") or v:IsA("SunRaysEffect") then
-                v:Destroy()
-            end
-        end
-        
-        local Lighting = game:GetService("Lighting")
-        if Lighting then
-            Lighting.Brightness = 1
-            Lighting.ExposureCompensation = 0
-            Lighting.ClockTime = 12 -- Reset to noon
-        end
-    end
 end
 
 local vu = game:GetService('VirtualUser')
