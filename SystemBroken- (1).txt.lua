@@ -1,3 +1,37 @@
+local player = game.Players.LocalPlayer
+local vim = game:GetService("VirtualInputManager")
+local TeleportService = game:GetService("TeleportService")
+
+getgenv().autoV = false
+getgenv().autoE = false
+getgenv().autoQ = false
+getgenv().destroyBlast = false
+
+function AutoKi()
+    spawn(function()
+        while getgenv().autoQ do
+            local energy = player.Status.Energy.Value
+            local maxEnergy = player.Status.MaxEnergy.Value
+            
+            if energy <= 0.05 * maxEnergy then
+                player.Character.Humanoid.Health = 0
+            else
+                vim:SendKeyEvent(true, "Q", false, game)
+                vim:SendKeyEvent(false, "Q", false, game)
+            end
+            wait(0.1)
+        end
+    end)
+end
+
+local vu = game:GetService('VirtualUser')
+game:GetService('Players').LocalPlayer.Idled:connect(function()
+    vu:CaptureController()
+    vu:ClickButton2(Vector2.new())
+end)
+
+-- //////////// [UI SETUP] ////////////////////////
+
 local redzlib = loadstring(game:HttpGet("https://raw.githubusercontent.com/REDzHUB/RedzLibV5/main/Source.Lua"))()
 
 local Window = redzlib:MakeWindow({
@@ -5,7 +39,6 @@ local Window = redzlib:MakeWindow({
     SubTitle = "big blek manki boi",
     SaveFolder = "cumHub-DBGT.json"
 })
-
 
 local Tab1 = Window:MakeTab({"Main", "home"})
 local Tab2 = Window:MakeTab({"Halloween", "moon"})
@@ -16,19 +49,11 @@ Window:AddMinimizeButton({
     Corner = { CornerRadius = UDim.new(0, 6) }
 })
 
-local player = game.Players.LocalPlayer
-local vim = game:GetService("VirtualInputManager")
-local TeleportService = game:GetService("TeleportService")
-
-getgenv().autoV = false
-getgenv().autoE = false
-getgenv().autoQ = false
-getgenv().destroyBlast = false
-
 local Section = Tab1:AddSection("Strength")
 Tab1:AddToggle({
     Name = "Auto Strength",
     Default = false,
+    Flag = "AutoStrength",
     Callback = function(ValueE)
         getgenv().autoE = ValueE
         if ValueE then
@@ -45,6 +70,7 @@ local Section1 = Tab1:AddSection("Defense")
 Tab1:AddToggle({
     Name = "Auto Defense",
     Default = false,
+    Flag = "AutoDefense",
     Callback = function(ValueV)
         getgenv().autoV = ValueV
         if ValueV then
@@ -61,6 +87,7 @@ local Section2 = Tab1:AddSection("Ki / Energy")
 Tab1:AddToggle({
     Name = "Auto Ki",
     Default = false,
+    Flag = "AutoKi",
     Callback = function(ValueQ)
         getgenv().autoQ = ValueQ
         if ValueQ then
@@ -87,6 +114,7 @@ Tab3:AddButton({
 Tab3:AddToggle({
     Name = "Delete Ki Blast [BOOST FPS]",
     Default = false,
+    Flag = "DeleteKiBlast",
     Callback = function(ValueDK)
         getgenv().destroyBlast = ValueDK
         while getgenv().destroyBlast do
@@ -98,10 +126,8 @@ Tab3:AddToggle({
     end
 })
 
-
 local Section3 = Tab2:AddSection("Halloween Event Pumpkin Locations")
 
--- Teleport buttons for pumpkin locations
 Tab2:AddButton({ 
     Name = "TP Pumpkin Location 1", 
     Callback = function() 
@@ -183,26 +209,3 @@ Tab2:AddButton({
         end
     end
 })
-
-function AutoKi()
-    spawn(function()
-        while getgenv().autoQ do
-            local energy = player.Status.Energy.Value
-            local maxEnergy = player.Status.MaxEnergy.Value
-            
-            if energy <= 0.05 * maxEnergy then
-                player.Character.Humanoid.Health = 0
-            else
-                vim:SendKeyEvent(true, "Q", false, game)
-                vim:SendKeyEvent(false, "Q", false, game)
-            end
-            wait(0.1)
-        end
-    end)
-end
-
-local vu = game:GetService('VirtualUser')
-game:GetService('Players').LocalPlayer.Idled:connect(function()
-    vu:CaptureController()
-    vu:ClickButton2(Vector2.new())
-end)
