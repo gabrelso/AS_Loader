@@ -22,7 +22,7 @@ local TeleportService = game:GetService("TeleportService")
 getgenv().autoV = false
 getgenv().autoE = false
 getgenv().autoQ = false
-getgenv().shaders = false
+getgenv().destroyBlast = false
 
 local Section = Tab1:AddSection("Strength")
 Tab1:AddToggle({
@@ -82,6 +82,21 @@ Tab3:AddButton({
         game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, game.JobId)
     end
 })
+
+Tab3:AddToggle({
+    Name = "Delete Ki Blast [BOOST FPS]",
+    Default = false,
+    Callback = function(ValueDK)
+        getgenv().destroyBlast = ValueDK
+        while getgenv().destroyBlast do
+            wait(0.1)
+            for _, part in pairs(workspace.PartStorage:GetChildren()) do
+                part:Destroy()
+            end
+        end
+    end
+})
+
 
 local Section3 = Tab2:AddSection("Halloween Event Pumpkin Locations")
 
