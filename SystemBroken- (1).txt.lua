@@ -1,4 +1,5 @@
 local redzlib = loadstring(game:HttpGet("https://raw.githubusercontent.com/REDzHUB/RedzLibV5/main/Source.Lua"))()
+local Window = redzlib:MakeWindow({ Title = "Cum Hub : Dragon Blox GT", SubTitle = "big blek manki boi", SaveFolder = "cumHub-DBGT.json" })
 
 local Window = redzlib:MakeWindow({
     Title = "Cum Hub : Dragon Blox GT",
