@@ -11,7 +11,7 @@ local Tab2 = Window:MakeTab({"Halloween", "moon"})
 local Tab3 = Window:MakeTab({"Misc", "plus"})
 
 Window:AddMinimizeButton({
-    Button = { Image = "rbxassetid://18372013477", BackgroundTransparency = 0 },
+    Button = { Image = "rbxassetid://89982798855448", BackgroundTransparency = 0 },
     Corner = { CornerRadius = UDim.new(0, 6) }
 })
 
