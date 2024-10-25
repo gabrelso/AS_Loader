@@ -1,6 +1,7 @@
 local player = game.Players.LocalPlayer
 local vim = game:GetService("VirtualInputManager")
 local TeleportService = game:GetService("TeleportService")
+local _wait = task.wait
 
 getgenv().autoV = false
 getgenv().autoE = false
