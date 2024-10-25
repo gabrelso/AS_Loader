@@ -20,7 +20,7 @@ function AutoKi()
                 vim:SendKeyEvent(true, "Q", false, game)
                 vim:SendKeyEvent(false, "Q", false, game)
             end
-            _wait(0.1)
+            _wait()
         end
     end)
 end
@@ -59,7 +59,7 @@ Tab1:AddToggle({
         getgenv().autoE = ValueE
         if ValueE then
             while getgenv().autoE do
-                _wait(0.1)
+                _wait()
                 vim:SendKeyEvent(true, "E", false, game)
                 vim:SendKeyEvent(false, "E", false, game)
             end
@@ -76,7 +76,7 @@ Tab1:AddToggle({
         getgenv().autoV = ValueV
         if ValueV then
             while getgenv().autoV do
-                _wait(0.1)
+                _wait()
                 vim:SendKeyEvent(true, "V", false, game)
                 vim:SendKeyEvent(false, "V", false, game)
             end
@@ -119,7 +119,7 @@ Tab3:AddToggle({
     Callback = function(ValueDK)
         getgenv().destroyBlast = ValueDK
         while getgenv().destroyBlast do
-            _wait(0.1)
+            _wait()
             for _, part in pairs(workspace.PartStorage:GetChildren()) do
                 part:Destroy()
             end
