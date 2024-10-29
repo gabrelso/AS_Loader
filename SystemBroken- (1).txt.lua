@@ -6,7 +6,7 @@ local Window = Fluent:CreateWindow({
     Title = "Fluent " .. Fluent.Version,
     SubTitle = "by dawid",
     TabWidth = 60,
-    Size = UDim2.fromOffset(300, 460),
+    Size = UDim2.fromOffset(380, 460),
     Acrylic = true, -- The blur may be detectable, setting this to false disables blur entirely
     MinimizeKey = Enum.KeyCode.LeftControl -- Used when theres no MinimizeKeybind
 })
